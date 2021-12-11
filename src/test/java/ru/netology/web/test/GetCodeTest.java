@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.netology.web.data.DataHelper.getAuthInfoWithWrongPassword;
 
 public class GetCodeTest {
+    UserGenerator mySql = new UserGenerator();
 
     @AfterAll
     static void clean() throws SQLException {
@@ -29,7 +30,6 @@ public class GetCodeTest {
         var verificationPage = loginPage.validLogin(authInfo);
         var verificationCode = UserGenerator.getVerificationCode("vasya");
         verificationPage.validVerify(verificationCode);
-
     }
 
     @Test
@@ -41,7 +41,8 @@ public class GetCodeTest {
         loginPage.validLogin(authInfo);
         loginPage.cleanLoginFields();
         loginPage.validLogin(authInfo);
-        var statusSQL = UserGenerator.getStatusFromDb(authInfo.getLogin());
+        var statusSQL = mySql.getStatusFromDb(authInfo.getLogin());
         assertEquals("blocked", statusSQL);
+
     }
 }

@@ -17,8 +17,6 @@ public class DashboardPage {
 
     public DashboardPage() {
         heading.shouldHave(text("Личный кабинет"));
-        firstCard.shouldBe(visible).shouldHave(text("**** **** **** 0001, баланс:"));
-        secondCard.shouldBe(visible).shouldHave(text("**** **** **** 0002, баланс:"));
     }
 
 

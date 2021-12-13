@@ -1,14 +1,11 @@
 package ru.netology.web.test;
 
 import lombok.SneakyThrows;
-import lombok.val;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import ru.netology.web.data.DataHelper;
 import ru.netology.web.data.UserGenerator;
 import ru.netology.web.page.LoginPageV1;
-
-import java.sql.SQLException;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,7 +15,7 @@ public class GetCodeTest {
     UserGenerator mySql = new UserGenerator();
 
     @AfterAll
-    static void clean() throws SQLException {
+    static void clean() {
         UserGenerator.cleanDb();
     }
 
@@ -33,7 +30,7 @@ public class GetCodeTest {
     }
 
     @Test
-    void shouldBeBlockedAfterThreeWrongPasswords() throws SQLException {
+    void shouldBeBlockedAfterThreeWrongPasswords() {
         var loginPage = open("http://localhost:9999", LoginPageV1.class);
         var authInfo = getAuthInfoWithWrongPassword();
         loginPage.validLogin(authInfo);

@@ -2,11 +2,7 @@ package ru.netology.web.page;
 
 import com.codeborne.selenide.SelenideElement;
 import lombok.SneakyThrows;
-import ru.netology.web.data.DataHelper;
 
-import java.sql.DriverManager;
-
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static ru.netology.web.data.UserGenerator.getVerificationCode;
 

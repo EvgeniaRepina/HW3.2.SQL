@@ -1,5 +1,7 @@
 package ru.netology.web.data;
 
+import lombok.SneakyThrows;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -11,7 +13,8 @@ public class UserGenerator {
         return connection;
     }
 
-    public static String getVerificationCode(String login) throws SQLException {
+    @SneakyThrows
+    public static String getVerificationCode(String login) {
         String userId = null;
         var dataSQL = "SELECT id FROM users WHERE login = ?;";
         try (var conn = getConnection();
@@ -39,7 +42,8 @@ public class UserGenerator {
         return code;
     }
 
-    public static String getStatusFromDb(String login) throws SQLException {
+    @SneakyThrows
+    public static String getStatusFromDb(String login) {
         String statusSQL = "SELECT status FROM users WHERE login = ?;";
         String status = null;
         try (var conn = getConnection();
@@ -54,7 +58,8 @@ public class UserGenerator {
         return status;
     }
 
-    public static void cleanDb() throws SQLException {
+    @SneakyThrows
+    public static void cleanDb() {
         String deleteCards = "DELETE FROM cards; ";
         String deleteAuthCodes = "DELETE FROM auth_codes; ";
         String deleteUsers = "DELETE FROM users; ";
